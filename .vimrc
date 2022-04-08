@@ -51,4 +51,4 @@ set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 source ~/.vim/config/plugins.vim         " Plugins
 source ~/.vim/config/colorscheme.vim 	 " Color schemas
 source ~/.vim/config/key-binding.vim 	 " key binding
-" source ~/.vim/config/coc-keybinding.vim  " coc key binding, disable by default 
+source ~/.vim/config/coc-keybinding.vim  " coc key binding

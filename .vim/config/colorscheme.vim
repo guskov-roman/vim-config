@@ -46,4 +46,21 @@ set cursorline
 "let g:jellybeans_use_lowcolor_black = 1
 "let g:jellybeans_use_term_italics = 1
 "let g:jellybeans_use_gui_italics = 1
-"
+
+" let g:terminal_ansi_colors = [
+"     \'#eeeeee', '#af0000', '#008700', '#5f8700',
+"     \'#0087af', '#878787', '#005f87', '#444444',
+"     \'#bcbcbc', '#d70000', '#d70087', '#8700af',
+"     \'#d75f00', '#d75f00', '#005faf', '#005f87' ]
+
+" let g:terminal_ansi_colors = [
+"      \'#000000', '#F92672', '#BAED00', '#EBCE00', 
+"      \'#00BEF3', '#BAA0F0', '#71C0ED', '#EAEAEA',
+"      \'#333333', '#FA397E', '#C1F600', '#FFE000',
+"      \'#00C2F9', '#C6ABFF', '#79CEFF', '#FFFFFF'] 
+
+let g:terminal_ansi_colors = [
+	\ '#2d3037', '#ab485f', '#45ac90', '#ab863b',
+	\ '#407baf', '#756187', '#42939f', '#ccdddd',
+	\ '#2d3037', '#ff597a', '#55ffcc', '#ffc03e', 
+	\ '#4daeff', '#a683bc', '#51d6e5', '#ffffff']
