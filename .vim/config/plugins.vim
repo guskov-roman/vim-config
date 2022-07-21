@@ -23,12 +23,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'mileszs/ack.vim'
 	Plug 'tpope/vim-commentary'
-	"Plug 'voldikss/vim-floaterm'
+	Plug 'voldikss/vim-floaterm'
 
 	" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	Plug 'airblade/vim-rooter'
+    Plug 'airblade/vim-rooter'
+    "Plug 'elzr/vim-json'
 
 	" Lightline status line and buffer
 	Plug 'itchyny/lightline.vim'
@@ -48,6 +49,7 @@ call plug#begin('~/.vim/plugged')
 
 	" C++ Development
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'cdelledonne/vim-cmake'
 
 call plug#end()
 
@@ -75,8 +77,10 @@ let g:lightline#bufferline#show_number  = 2
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unnamed      = '[none]'
 
+" \ 'colorscheme': 'ayu_dark',
+
 let g:lightline = {
-	\ 'colorscheme': 'ayu_dark',
+	\ 'colorscheme': 'ayu_mirage',
 	\ 'tabline' : { 
 	\	'left': [['buffers']], 'right': [['close']]
 	\},
@@ -119,3 +123,8 @@ endfunction
 "let g:lightline.colorscheme 	 = 'ayu_dark'
 "let g:lightline.colorscheme 	 = 'darcula'
 "let g:lightline.colorscheme 	 = 'wombat'
+"
+let g:coc_start_at_startup = v:false
+
+let g:rooter_patterns = ['.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'CMakeLists.txt', 'package.json']
+"let g:rooter_change_directory_for_non_project_files = 'current'

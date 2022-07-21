@@ -6,8 +6,8 @@ endif
 set colorcolumn=100
 highlight ColorColumn ctermbg=Black ctermfg=DarkRed
 
-colorscheme onehalfdark
-set cursorline
+"colorscheme onehalfdark
+"set cursorline
 
 "set background=dark
 "let g:enable_italic_font = 1
@@ -35,12 +35,12 @@ set cursorline
 "let g:one_allow_italics = 1 " I love italic for comments
 
 "let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
+let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of theme
-"colorscheme ayu
+colorscheme ayu
 "
-" set background=light
-" colorscheme PaperColor
+"set background=light
+"colorscheme PaperColor
 
 "colorscheme jellybeans
 "let g:jellybeans_use_lowcolor_black = 1
@@ -59,8 +59,8 @@ set cursorline
 "      \'#333333', '#FA397E', '#C1F600', '#FFE000',
 "      \'#00C2F9', '#C6ABFF', '#79CEFF', '#FFFFFF'] 
 
-let g:terminal_ansi_colors = [
-	\ '#2d3037', '#ab485f', '#45ac90', '#ab863b',
-	\ '#407baf', '#756187', '#42939f', '#ccdddd',
-	\ '#2d3037', '#ff597a', '#55ffcc', '#ffc03e', 
-	\ '#4daeff', '#a683bc', '#51d6e5', '#ffffff']
+"let g:terminal_ansi_colors = [
+"	\ '#2d3037', '#ab485f', '#45ac90', '#ab863b',
+"	\ '#407baf', '#756187', '#42939f', '#ccdddd',
+"	\ '#2d3037', '#ff597a', '#55ffcc', '#ffc03e', 
+"	\ '#4daeff', '#a683bc', '#51d6e5', '#ffffff']

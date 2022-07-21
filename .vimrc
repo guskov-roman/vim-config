@@ -38,6 +38,9 @@ set noshowmode
 set clipboard=unnamed,unnamedplus
 set cursorline
 set ttymouse=xterm2
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 set nobackup "Some servers have issues with backup files, see #649.
 set nowritebackup
@@ -52,3 +55,5 @@ source ~/.vim/config/plugins.vim         " Plugins
 source ~/.vim/config/colorscheme.vim 	 " Color schemas
 source ~/.vim/config/key-binding.vim 	 " key binding
 source ~/.vim/config/coc-keybinding.vim  " coc key binding
+
+let g:floaterm_keymap_new = '<Leader>ft'
