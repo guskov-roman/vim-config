@@ -1,22 +1,11 @@
-" if exists('$TMUX')
-"     " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
-"     let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
-"     let &t_SR .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
-"     let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
-"     autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
-" else
-"     let &t_SI .= "\<Esc>[6 q"
-"     let &t_SR .= "\<Esc>[4 q"
-"     let &t_EI .= "\<Esc>[2 q"
-"     autocmd VimLeave * silent !echo -ne "\033[0 q"
-" endi
-"
+" Set cursor line style
+
 let &t_SI .= "\<Esc>[6 q"
 let &t_SR .= "\<Esc>[4 q"
 let &t_EI .= "\<Esc>[2 q"
 autocmd VimLeave * silent !echo -ne "\033[0 q"
  
-
+" remap lead key, bei default '\'
 let mapleader = ","
 
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -30,6 +19,8 @@ nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
+let g:lt_quickfix_list_toggle_map = '<leader>h'
+
 "Move to the next buffer
 nmap <leader>l :bnext<CR>
 "Move to the previous buffer
@@ -41,6 +32,8 @@ nmap <leader>b :Buffers<CR>
 "nmap <leader>b :BuffergatorToggle<CR>
 
 "Clipboard settings. Ctrl-X and Ctrl-Del are Cut
+"
+nnoremap gm m
 vnoremap <C-X> "+x
 vnoremap <S-Del> "+x
 
@@ -59,23 +52,50 @@ vmap <S-Tab> <gv
 
 noremap r <C-R>
 
-nnoremap <Leader>ag :Ag<Space>
+" nnoremap <Leader>ag :Ag<Space>
 "Ctrl + s for save on command and insert mode (must add in .bashrc: stty -ixon)
 map <C-s> :write<CR>
 imap <C-s> <esc>:write<cr>
 
-map <C-f> :Files<CR>
-imap <C-f> <esc>:Files<cr>
-
 " Split window key mapping
-nmap <silent> <A-Right> :wincmd l<CR>
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :call WinMove('l')<CR>
+nmap <silent> <A-Up> :call WinMove('k')<CR>
+nmap <silent> <A-Down> :call WinMove('j')<CR>
+nmap <silent> <A-Left> :call WinMove('h')<CR>
+
+map <silent> <C-h> :call WinMove('h')<CR>
+map <silent> <C-j> :call WinMove('j')<CR>
+map <silent> <C-k> :call WinMove('k')<CR>
+map <silent> <C-l> :call WinMove('l')<CR>
+
+function! WinMove (key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key, '[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
 
 "Turn highlighting off till next search
 map <silent> <leader>/ :nohlsearch<cr>
+" map <leader>f :Files<CR>
+" imap <leader>f <esc>:Files<cr>
+map <C-f> :Files<CR>
+imap <C-f> <esc>:Files<cr>
 
-nmap <C-E> :NERDTreeToggle<CR>
-"nmap <C-0> :NERDTreeToggle<CR>
+map <leader>f :Grep<Space>
+imap <leader>f <esc>:Grep<Space>
+map <F3> :cn<CR>
+map <F4> :cp<CR>
+
+nmap <F12> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+
+nnoremap <space> za
+nnoremap <DEL> "_x
+vnoremap <DEL> "_x

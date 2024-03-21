@@ -1,9 +1,6 @@
 "set colorcolumn=100
 "highlight ColorColumn ctermbg=Black ctermfg=DarkRed
 
-"colorscheme onehalfdark
-"set cursorline
-
 " set background=dark
 " let g:enable_italic_font = 1
 " let g:hybrid_transparent_background = 1
@@ -21,35 +18,41 @@
 " colorscheme tender
 
 " colorscheme onehalflight
-" set cursorline
-" let g:lightline.colorscheme 	 = 'onehalflight'
+" colorscheme onehalfdark
 "
- " colorscheme one
- " set background=dark " for the dark version
- " set background=light " for the light version
- " let g:one_allow_italics = 1 " I love italic for comments
+" colorscheme onedark
+
+
+" colorscheme one
+" set background=dark  
+" set background=light 
+" let g:one_allow_italics = 1 " I love italic for comments
+
+" set background=dark
+" set background=light
+" colorscheme PaperColor
+
+" colorscheme jellybeans
+" let g:jellybeans_use_lowcolor_black = 1
+" let g:jellybeans_use_term_italics = 1
+" let g:jellybeans_use_gui_italics = 1
+
+" colorscheme everforest
+" " set background=light
+" set background=dark
+" let g:everforest_better_performance=1
+" " 'hard', 'medium'(default), 'soft'
+" let g:everforest_background='soft' 
+
+let g:oceanic_italic_comments = 1
+let g:oceanic_bold = 0
+colorscheme oceanicnext
 
 " let ayucolor="dark" " dark light mirage
 " colorscheme ayu
 
-"set background=light
-"colorscheme PaperColor
 
-colorscheme jellybeans
-let g:jellybeans_use_lowcolor_black = 1
-let g:jellybeans_use_term_italics = 1
-let g:jellybeans_use_gui_italics = 1
-
-" colorscheme everforest
-"set background=dark "light
-" set background=dark
-" let g:everforest_better_performance=1
-" 'hard', 'medium'(default), 'soft'
-" let g:everforest_background='soft' 
-
-" let g:oceanic_italic_comments = 1
-" let g:oceanic_bold = 0
-" colorscheme oceanicnext
+" colorscheme gotham256
 
 " ##############################################################################################
 "  Terminal color settings 
@@ -67,6 +70,7 @@ let g:jellybeans_use_gui_italics = 1
 "      \'#333333', '#FA397E', '#C1F600', '#FFE000',
 "      \'#00C2F9', '#C6ABFF', '#79CEFF', '#FFFFFF'] 
 
+" My Default colors
 let g:terminal_ansi_colors = [
 	\ '#2d3037', '#ab485f', '#45ac90', '#ab863b',
 	\ '#407baf', '#756187', '#42939f', '#ccdddd',
@@ -82,6 +86,12 @@ let g:terminal_ansi_colors = [
 
 " highlight Terminal guibg='#282828'
 " highlight Terminal guifg='#ebdbb2'
+
+ " let g:terminal_ansi_colors = [
+ "    \ '#4e4e4e', '#d68787', '#5f865f', '#d8af5f',
+ "    \ '#85add4', '#d7afaf', '#87afaf', '#d0d0d0',
+ "    \ '#626262', '#d75f87', '#87af87', '#ffd787',
+ "    \ '#add4fb', '#ffafaf', '#87d7d7', '#e4e4e4']
  
 " ##############################################################################################
 "  Lightline settings 
@@ -92,10 +102,10 @@ let g:lightline#bufferline#show_number  = 2
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unnamed      = '[NONE]'
 
-" \ 'colorscheme': ayu_dark, ayu_mirage, wombat, Tomorrow_Night_Bright, materia, material
+" \ 'colorscheme': ayu_dark, ayu_mirage, wombat, Tomorrow_Night_Bright, materia, material, onehalfdark 
 
 let g:lightline = {
-	\ 'colorscheme': 'material',
+	\ 'colorscheme': 'onehalfdark',
 	\ 'tabline' : { 
 	\	'left': [['buffers']], 'right': [['close']]
 	\},

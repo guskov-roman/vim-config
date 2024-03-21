@@ -10,25 +10,23 @@ call plug#begin('~/.vim/plugged')
 
 	" Browse the file system
 	Plug 'scrooloose/nerdtree'
-	Plug 'ryanoasis/vim-devicons'
+	" Plug 'ryanoasis/vim-devicons'
 	Plug 'preservim/tagbar'
     " Plug 'jeetsukumaran/vim-buffergator'
     Plug 'voldikss/vim-floaterm'
 
 	Plug 'svermeulen/vim-easyclip'
     Plug 'dkprice/vim-easygrep'
+    " Plug 'Valloric/ListToggle'
 
 	Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
 	Plug 'mileszs/ack.vim'
 	Plug 'tpope/vim-commentary'
 
  	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-    Plug 'airblade/vim-rooter'
-
-    " Airline status line plugins
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
+    " Plug 'airblade/vim-rooter'
 
 	" Lightline status line and buffer
 	Plug 'itchyny/lightline.vim'
@@ -42,89 +40,59 @@ call plug#begin('~/.vim/plugged')
 	Plug 'rakr/vim-one'
 	Plug 'sainnhe/everforest'
 	Plug 'NLKNguyen/papercolor-theme'
-	Plug 'ayu-theme/ayu-vim' 
+	Plug 'ayu-theme/ayu-vim'
 	Plug 'nanotech/jellybeans.vim'
     Plug 'adrian5/oceanic-next-vim'
-    
+    Plug 'joshdick/onedark.vim'
+
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 	" C++ Development
+    "
     " Plug 'cdelledonne/vim-cmake'
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'ycm-core/YouCompleteMe'
+
+    " Python Development
+    " Plug 'davidhalter/jedi-vim'
+    " Plug 'dense-analysis/ale'
 
 call plug#end()
 
-" ################################### cmake and coc plugins ####################################################
 
-" let g:cmake_link_compile_commands = 1
-" let g:cmake_build_dir_location = '../build'
+let $FZF_DEFAULT_COMMAND = "find . -type f -not -path '*/\.git/*'"
 
-" set updatetime=300
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" " Always show the signcolumn, otherwise it would shift the text each time
-" " diagnostics appear/become resolved
-" set signcolumn=yes
+" Close the quickfix buffer 
+autocmd WinEnter * if winnr('$') == 1 && &buftype == "quickfix"| quit |endif
 
-" " Use tab for trigger completion with characters ahead and navigate
-" " NOTE: There's always complete item selected by default, you may want to enable
-" " no select by `"suggest.noselect": true` in your configuration file
-" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" " other plugin before putting this into your config
-" inoremap <silent><expr> <TAB>
-"       \ coc#pum#visible() ? coc#pum#next(1) :
-"       \ CheckBackspace() ? "\<Tab>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+let g:NERDTreeFileLines = 1
 
-" " Make <CR> to accept selected completion item or notify coc.nvim to format
-" " <C-g>u breaks current undo, please make your own choice
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" let g:syntastic_quiet_messages = { "level": "warnings" }
 
-" function! CheckBackspace() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
 
-" " Use <c-space> to trigger completion
-" if has('nvim')
-"   inoremap <silent><expr> <c-space> coc#refresh()
-" else
-"   inoremap <silent><expr> <c-@> coc#refresh()
-" endif
+" show number of errors
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+    return l:counts.total == 0 ? 'OK' : printf(
+        \   '%d⨉ %d⚠ ',
+        \   all_non_errors,
+        \   all_errors
+        \)
+endfunction
+set statusline+=%=
+set statusline+=\ %{LinterStatus()}
 
-" " Use `[g` and `]g` to navigate diagnostics
-" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-" nmap <silent> [g <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" " GoTo code navigation
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-
-" " Use K to show documentation in preview window
-" nnoremap <silent> K :call ShowDocumentation()<CR>
-
-" function! ShowDocumentation()
-"   if CocAction('hasProvider', 'hover')
-"     call CocActionAsync('doHover')
-"   else
-"     call feedkeys('K', 'in')
-"   endif
-" endfunction
-
-" " Highlight the symbol and its references when holding the cursor
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" " Symbol renaming
-" nmap <leader>rn <Plug>(coc-rename)
-
-" " Formatting selected code
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-
-
-" nmap <leader>cg :CMakeGenerate<cr>
-" nmap <leader>cb :CMakeBuild<cr>
-" nmap <leader>cc :CMakeClean<cr>
-" nmap <leader>cq :CMakeClose<cr>
+let g:ale_completion_enabled = 0

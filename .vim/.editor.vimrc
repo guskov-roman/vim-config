@@ -23,7 +23,7 @@ set comments=sl:/*,mb:\ *,elx:\ */                                          " In
 set wildmode=longest:full,full
 set wildmenu
 set hidden                                                                  " Allow changing buffers without saving them
-set cul                                                                   " Highlight the current line
+set cul                                                                     " Highlight the current line
 set backspace=2                                                             " Backspace tweaks
 set backspace=indent,eol,start
 set smarttab
@@ -36,12 +36,14 @@ set termguicolors
 set scrolloff=3
 set autoread
 set confirm 
-set noswapfile
+" set noswapfile
 set ruler
 set showcmd
 set foldenable
 set foldlevel=100
 set foldmethod=indent
+" set foldmethod=manual
+" set foldmethod=syntax
 set mouse+=a
 set mousemodel=popup
 set guioptions-=T 
@@ -52,11 +54,11 @@ set showtabline=2
 " set noshowmode
 " set cursorline
 " set signcolumn=number
- set nobackup "Some servers have issues with backup files, see #649.
- set nowritebackup
+set nobackup "Some servers have issues with backup files, see #649.
+set nowritebackup
 "set cmdheight=2 "Give more space for displaying messages.
- set updatetime=300 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
- set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+set updatetime=300  " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set shortmess+=c    " Don't pass messages to |ins-completion-menu|.
 
 if has("mouse_sgr")
     set ttymouse=sgr
