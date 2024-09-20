@@ -104,3 +104,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+export PATH="$PATH:/home/baikal.int/r.guskov/.local/opt/nvim-linux64/bin"
