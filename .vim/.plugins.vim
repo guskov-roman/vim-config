@@ -13,11 +13,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'preservim/tagbar'
     Plug 'preservim/nerdtree'
+    Plug 'ludovicchabant/vim-gutentags'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
  	" Lightline status line and buffer
-	" Plug 'itchyny/lightline.vim'
-	" Plug 'mengelbrecht/lightline-bufferline'
+	Plug 'itchyny/lightline.vim'
+	Plug 'mengelbrecht/lightline-bufferline'
 
 	" Color scheme
 	" Plug 'morhetz/gruvbox'
@@ -52,49 +53,49 @@ let g:NERDTreeFileLines = 1
 
 " ************************ LightLine Settings *********************************
 
-" let g:lightline#bufferline#show_number  = 2
-" let g:lightline#bufferline#shorten_path = 0
-" let g:lightline#bufferline#unnamed      = '[NONE]'
+let g:lightline#bufferline#show_number  = 2
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#unnamed      = '[NONE]'
 
-" " \ 'colorscheme': ayu_dark, ayu_mirage, wombat, Tomorrow_Night_Bright,
-" " materia, material, onehalfdark
+" \ 'colorscheme': ayu_dark, ayu_mirage, wombat, Tomorrow_Night_Bright,
+" materia, material, onehalfdark
 
-" let g:lightline = {
-" 	\ 'colorscheme': 'ayu_dark',
-" 	\ 'tabline' : {
-" 	\	'left': [['buffers']], 'right': [['close']]
-" 	\},
-" 	\ 'active': {
-" 	\	'left':  [[ 'mode', 'paste', 'readonly' ],
-" 	\                ['fugitive', 'filename', 'modified' ]],
-"     	\	'right': [[ 'lineinfo' ],
-"     	\              	 [ 'percent' ],
-"     	\              	 [ 'fileformat', 'fileencoding', 'filetype', ]]
-" 	\ },
-" 	\ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
-" 	\ 'component_type': {'buffers': 'tabsel'},
-" 	\ 'component_function': {
-" 	\   'fugitive': 'LightlineFugitive',
-" 	\   'filename': 'LightlineFilename'
-" 	\ }
-" 	\ }
-" " Function to check if the file has been modified
-" function! LightlineModified()
-" 	return &ft =~# 'help\|vimfiler' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-" endfunction
-" " Function to check the read-only property
-" function! LightlineReadonly()
-" 	return &ft !~? 'help\|vimfiler' && &readonly ? 'RO' : ''
-" endfunction
-" " Function to get the current branch from Fugitive
-" function! LightlineFugitive()
-" 	if &ft !~? 'vimfiler' && exists('*FugitiveHead')
-" 		return FugitiveHead()
-" 	endif
-" 	return ''
-" endfunction
+let g:lightline = {
+	\ 'colorscheme': 'ayu_dark',
+	\ 'tabline' : {
+	\	'left': [['buffers']], 'right': [['close']]
+	\},
+	\ 'active': {
+	\	'left':  [[ 'mode', 'paste', 'readonly' ],
+	\                ['fugitive', 'filename', 'modified' ]],
+    	\	'right': [[ 'lineinfo' ],
+    	\              	 [ 'percent' ],
+    	\              	 [ 'fileformat', 'fileencoding', 'filetype', ]]
+	\ },
+	\ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
+	\ 'component_type': {'buffers': 'tabsel'},
+	\ 'component_function': {
+	\   'fugitive': 'LightlineFugitive',
+	\   'filename': 'LightlineFilename'
+	\ }
+	\ }
+" Function to check if the file has been modified
+function! LightlineModified()
+	return &ft =~# 'help\|vimfiler' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+" Function to check the read-only property
+function! LightlineReadonly()
+	return &ft !~? 'help\|vimfiler' && &readonly ? 'RO' : ''
+endfunction
+" Function to get the current branch from Fugitive
+function! LightlineFugitive()
+	if &ft !~? 'vimfiler' && exists('*FugitiveHead')
+		return FugitiveHead()
+	endif
+	return ''
+endfunction
 
-" ************************ Coc Settings *********************************
+"************************ Coc Settings *********************************
 
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :

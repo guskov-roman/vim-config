@@ -1,3 +1,9 @@
+" Default colorschema
+"
+colorscheme habamax
+" colorscheme torte
+" colorscheme slate
+
 " set background=dark
 " let g:enable_italic_font = 1
 " let g:hybrid_transparent_background = 1

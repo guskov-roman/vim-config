@@ -42,8 +42,10 @@ set showtabline=2
 set updatetime=300  " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience
 set noswapfile
 
+" set omnifunc=syntaxcomplete#Complete
+
 set colorcolumn=120
-"execute "set colorcolumn=" . join(range(81,335), ',')
+execute "set colorcolumn=" . join(range(81,335), ',')
 highlight ColorColumn ctermbg=Gray ctermfg=DarkRed
 
 if has("mouse_sgr")
@@ -55,4 +57,3 @@ end
 source ~/.vim/.plugins.vim
 source ~/.vim/.colorschemes.vim
 source ~/.vim/.keybinding.vim
-
